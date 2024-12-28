@@ -1,3 +1,7 @@
 main ul li img {
     width: 50px;
 }
+
+main ul li a~a img {
+    width: 30px;
+}
