@@ -3,10 +3,7 @@ require 'bdd.php';
 $id = $_GET['id'] ?? '';
 
 // Recherche de la personne
-$sql = 'SELECT * FROM personnes WHERE id=:id';
-$statement = $db->prepare($sql);
-$statement->execute(compact('id'));
-$personne = $statement->fetch();
+$personne = find('personnes', $id);
 
 if (!$personne) {
     header('location:personnes.php');
@@ -22,9 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['supprimer'])) {
     }
 
     // suppression de la personne
-    $sql = 'DELETE FROM personnes WHERE id = :id';
-    $statement = $db->prepare($sql);
-    $statement->execute(compact('id'));
+    delete('personnes', $id);
 
     header('location:personnes.php');
     exit();

@@ -1,12 +1,7 @@
 <?php
-require 'bdd.php';
-// création de la requête
-$sql = 'SELECT * FROM personnes';
-// envoi de la requête et récupération du résultat
-$statement = $db->prepare($sql);
-$statement->execute();
+require 'model.php';
 
-$listePersonnes = $statement->fetchAll();
+$listePersonnes = all('personnes');
 
 $page_title = 'Personnes';
 ?>

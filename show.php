@@ -2,11 +2,7 @@
 require 'bdd.php';
 $id = $_GET['id'] ?? '';
 
-// Recherche de la personne
-$sql = 'SELECT * FROM personnes WHERE id=:id';
-$statement = $db->prepare($sql);
-$statement->execute(compact('id'));
-$personne = $statement->fetch();
+$personne = find('personnes', $id);
 
 if (!$personne) {
     header('location:personnes.php');

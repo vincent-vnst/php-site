@@ -10,17 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
     $age = (int) $_POST['age'] ?? 0;
     $slug = $_POST['slug'] ?? '';
 
-    // création de la requête
-    $sql = "INSERT INTO personnes
-              (nom, prenom, age, slug)
-            VALUES
-              (:nom, :prenom, :age, :slug)";
-
-    // envoi de la requête
-    $statement = $db->prepare($sql);
-    $statement->execute(compact('nom', 'prenom', 'age', 'slug'));
-
-    $id = $db->lastInsertId();
+    $id = create('personnes', compact('nom', 'prenom', 'age', 'slug'));
 
     // récupération de la photo si elle existe
     if (isset($_FILES['photo']) && is_uploaded_file($_FILES['photo']['tmp_name'])) {
@@ -36,13 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
         copy($origine, $destination);
     }
     // modification photo
-    $sql = "UPDATE personnes SET 
-            photo = :photo                  
-          WHERE id = :id";
-
-    // envoi de la requête
-    $statement = $db->prepare($sql);
-    $statement->execute(compact('photo', 'id'));
+    update('personnes', compact('photo', 'id'));
 
     // redirection
     header('location:personnes.php');

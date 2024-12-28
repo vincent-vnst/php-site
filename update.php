@@ -3,11 +3,7 @@ require 'bdd.php';
 
 $id = $_GET['id'] ?? '';
 
-// Recherche de la personne
-$sql = 'SELECT * FROM personnes WHERE id=:id';
-$statement = $db->prepare($sql);
-$statement->execute(compact('id'));
-$personne = $statement->fetch();
+$personne = find('personnes', $id);
 
 if (!$personne) {
     header('location:personnes.php');
@@ -33,16 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['modifier'])) {
         }
     }
     // modification de la personne
-    $sql = "UPDATE personnes SET 
-                nom = :nom,
-                prenom = :prenom,
-                age = :age,
-                slug = :slug,
-                photo = :photo                
-            WHERE id = :id";
-
-    $statement = $db->prepare($sql);
-    $statement->execute(compact('nom', 'prenom', 'age', 'slug', 'photo', 'id'));
+    update('personnes', compact('nom', 'prenom', 'age', 'slug', 'photo', 'id'));
 
     // modification de la photo si nouvelle photo
     if (isset($_FILES['photo']) && is_uploaded_file($_FILES['photo']['tmp_name'])) {
