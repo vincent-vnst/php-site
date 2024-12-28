@@ -1,5 +1,5 @@
 <?php
-require 'bdd.php';
+require 'model.php';
 
 $id = $_GET['id'] ?? '';
 

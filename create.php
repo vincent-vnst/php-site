@@ -1,5 +1,5 @@
 <?php
-require 'bdd.php';
+require 'model.php';
 $page_title = 'Ajouter';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
