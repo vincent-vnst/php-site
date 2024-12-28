@@ -18,7 +18,9 @@ $page_title = 'Personnes';
             foreach ($listePersonnes as $personne) {
                 ?>
                 <li>
-                    <img src='photos/<?= $personne['photo'] ?>' alt='photo <?= $personne['nom'] ?>' />
+                    <a href='show.php?id=<?= $personne['id'] ?>'>
+                        <img src='photos/<?= $personne['photo'] ?>' alt='photo <?= $personne['nom'] ?>' />
+                    </a>
                     <?= $personne['nom'] ?>
                     <?= $personne['prenom'] ?>
                     <?= $personne['age'] ?> ans
