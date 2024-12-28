@@ -2,14 +2,19 @@
 require 'bdd.php';
 $id = $_GET['id'] ?? '';
 
-$personne = current(array_filter($listePersonnes, fn($p) => $p['id'] == $id));
+// Recherche de la personne
+$sql = 'SELECT * FROM personnes WHERE id=:id';
+$statement = $db->prepare($sql);
+$statement->execute(compact('id'));
+$personne = $statement->fetch();
 
 if (!$personne) {
     header('location:personnes.php');
     exit();
 }
 
-$page_title = 'Afficher-' . $personne['nom'];
+$page_title = "Afficher-$personne[nom]";
+
 ?>
 <!DOCTYPE html>
 <html lang='fr'>
