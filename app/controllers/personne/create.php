@@ -1,5 +1,5 @@
 <?php
-require 'model.php';
+require '../app/models/model.php';
 $page_title = 'Ajouter';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
@@ -32,51 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
     header('location:personnes.php');
     exit();
 }
-?>
-<!DOCTYPE html>
-<html lang='fr'>
 
-<?php require 'head.php'; ?>
-
-<body>
-    <?php require 'header.php'; ?>
-    <main>
-        <h1>Ajouter</h1>
-        <form action='' method='post' enctype='multipart/form-data'>
-
-            <div>
-                <span>Nom</span>
-                <input type='text' name='nom'>
-            </div>
-
-            <div>
-                <span>Prénom</span>
-                <input type='text' name='prenom'>
-            </div>
-
-            <div>
-                <span>Age</span>
-                <input type='text' name='age'>
-            </div>
-
-            <div>
-                <span>Slug</span>
-                <input type='text' name='slug'>
-            </div>
-
-            <div>
-                <span>Photo</span>
-                <input type='file' name='photo'>
-            </div>
-
-            <div>
-                <button type='submit' name='ajouter'>Ajouter</button>
-                <a href='personnes.php'><button type='button'>Annuler</button></a>
-            </div>
-
-        </form>
-    </main>
-    <?php require 'footer.php'; ?>
-</body>
-
-</html>
+require '../app/views/personne/create.php';

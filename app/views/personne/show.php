@@ -1,24 +1,10 @@
-<?php
-require 'model.php';
-$id = $_GET['id'] ?? '';
-
-$personne = find('personnes', $id);
-
-if (!$personne) {
-    header('location:personnes.php');
-    exit();
-}
-
-$page_title = "Afficher-$personne[nom]";
-
-?>
 <!DOCTYPE html>
 <html lang='fr'>
 
-<?php require 'head.php' ?>
+<?php require '../app/views/head.php' ?>
 
 <body>
-    <?php require 'header.php' ?>
+    <?php require '../app/views/header.php' ?>
 
     <main>
         <h1>Afficher</h1>
@@ -31,7 +17,7 @@ $page_title = "Afficher-$personne[nom]";
         </section>
     </main>
 
-    <?php require 'footer.php' ?>
+    <?php require '../app/views/footer.php' ?>
 </body>
 
 </html>

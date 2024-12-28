@@ -1,5 +1,5 @@
 <?php
-require 'bdd.php';
+require '../app/bdd.php';
 
 // all('personnes') => $sql = "SELECT * FROM personnes"
 function all(string $table)
