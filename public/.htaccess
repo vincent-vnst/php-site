@@ -1,0 +1,10 @@
+# Empêcher l'affichage du contenu des répertoires
+Options -Indexes
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Rediriger toutes les requêtes vers index.php si le fichier ou dossier demandé n'existe pas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
