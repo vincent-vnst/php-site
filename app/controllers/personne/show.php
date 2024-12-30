@@ -1,14 +1,13 @@
 <?php
-require '../app/models/model.php';
-$id = $_GET['id'] ?? '';
+$id = getParams('id');
 
 $personne = find('personnes', $id);
 
 if (!$personne) {
-    header('location:personnes.php');
+    header('location:' . route('personne.index'));
     exit();
 }
 
 $page_title = "Afficher-$personne[nom]";
 
-require '../app/views/personne/show.php';
+view('personne.show', compact(['page_title', 'personne']));

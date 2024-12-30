@@ -1,12 +1,10 @@
 <?php
-require '../app/models/model.php';
-
-$id = $_GET['id'] ?? '';
+$id = getParams('id');
 
 $personne = find('personnes', $id);
 
 if (!$personne) {
-    header('location:personnes.php');
+    header('location:' . route('personne.index'));
     exit();
 }
 
@@ -44,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['modifier'])) {
         move_uploaded_file($origine, $destination);
     }
 
-    header('location:personnes.php');
+    header('location:' . route('personne.index'));
     exit();
 }
 
-require '../app/views/personne/update.php';
+view('personne.update', compact(['page_title', 'personne']));

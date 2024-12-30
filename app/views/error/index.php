@@ -7,7 +7,7 @@
     <?php view('header') ?>
 
     <main>
-        <h1>Accueil</h1>
+        <h1>Error 404</h1>
     </main>
 
     <?php view('footer') ?>

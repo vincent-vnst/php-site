@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang='fr'>
 
-<?php require '../app/views/head.php' ?>
+<?php view('head', compact('page_title')) ?>
 
 <body>
-    <?php require '../app/views/header.php' ?>
+    <?php view('header') ?>
 
     <main>
         <h1>Afficher</h1>
@@ -14,16 +14,16 @@
             foreach ($listePersonnes as $personne) {
                 ?>
                 <li>
-                    <a href='show.php?id=<?= $personne['id'] ?>'>
+                    <a href='<?= route('personne.show', ['id' => $personne['id']]) ?>'>
                         <img src='photos/<?= $personne['photo'] ?>' alt='photo <?= $personne['nom'] ?>' />
                     </a>
                     <?= $personne['nom'] ?>
                     <?= $personne['prenom'] ?>
                     <?= $personne['age'] ?> ans
-                    <a href='delete.php?id=<?= $personne['id'] ?>'>
+                    <a href='<?= route('personne.delete', ['id' => $personne['id']]) ?>'>
                         <img src='images/poubelle.png' alt='supprimer' />
                     </a>
-                    <a href='update.php?id=<?= $personne['id'] ?>'>
+                    <a href='<?= route('personne.update', ['id' => $personne['id']]) ?>'>
                         <img src='images/crayon.png' alt='modifier' />
                     </a>
                 </li>
@@ -33,7 +33,7 @@
         </ul>
     </main>
 
-    <?php require '../app/views/footer.php' ?>
+    <?php view('footer') ?>
 </body>
 
 </html>
