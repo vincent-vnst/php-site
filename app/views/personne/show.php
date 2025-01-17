@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang='fr'>
 
-<?php require '../app/views/head.php' ?>
+<?= view('head', compact('page_title')) ?>
 
 <body>
-    <?php require '../app/views/header.php' ?>
+    <?= view('header') ?>
 
     <main>
         <h1>Afficher</h1>
@@ -17,7 +17,7 @@
         </section>
     </main>
 
-    <?php require '../app/views/footer.php' ?>
+    <?= view('footer') ?>
 </body>
 
 </html>

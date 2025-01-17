@@ -1,12 +1,11 @@
 <?php
-require '../app/models/model.php';
-$id = $_GET['id'] ?? '';
+$id = getParams('id');
 
 // Recherche de la personne
 $personne = find('personnes', $id);
 
 if (!$personne) {
-    header('location:personnes.php');
+    header('location:' . route('personne.index'));
     exit();
 }
 
@@ -21,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['supprimer'])) {
     // suppression de la personne
     delete('personnes', $id);
 
-    header('location:personnes.php');
+    header('location:' . route('personne.index'));
     exit();
 }
 
-require '../app/views/personne/delete.php';
+view('personne.delete', compact(['page_title', 'personne']));

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang='fr'>
 
-<?php require '../app/views/head.php'; ?>
+<?= view('head', compact('page_title')) ?>
 
 <body>
-    <?php require '../app/views/header.php'; ?>
+    <?= view('header') ?>
 
     <main>
         <h1>Supprimer</h1>
@@ -17,11 +17,11 @@
             </section>
             <div>
                 <button type='submit' name='supprimer'>Supprimer</button>
-                <a href='personnes.php'><button type='button'>Annuler</button></a>
+                <a href='<?= route('personne.index') ?>'><button type='button'>Annuler</button></a>
             </div>
         </form>
     </main>
-    <?php require '../app/views/footer.php'; ?>
+    <?= view('footer') ?>
 </body>
 
 </html>

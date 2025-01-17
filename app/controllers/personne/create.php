@@ -1,5 +1,4 @@
 <?php
-require '../app/models/model.php';
 $page_title = 'Ajouter';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
@@ -29,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ajouter'])) {
     update('personnes', compact('photo', 'id'));
 
     // redirection
-    header('location:personnes.php');
+    header('location:' . route('personne.index'));
     exit();
 }
 
-require '../app/views/personne/create.php';
+view('personne.create', compact(['page_title']));

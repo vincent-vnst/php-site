@@ -1,8 +1,8 @@
 <header>
     <nav>
         <ul>
-            <li><a href='home'>Accueil</a></li>
-            <li><a href='personnes'>Personnes</a></li>
+            <li><a href='<?= route('home.index') ?>'>Accueil</a></li>
+            <li><a href='<?= route('personne.index') ?>'>Personnes</a></li>
         </ul>
     </nav>
 </header>
